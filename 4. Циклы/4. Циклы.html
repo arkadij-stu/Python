@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Циклы</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
+    <script src="https://kit.fontawesome.com/b8991598f2.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1><span class="emoji">📝</span>4. Циклы</h1>
+        <p>Теоретический материал</p>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="#цикл-for">🔹 Цикл for</a></li>
+<li><a href="#цикл-while">🔹 Цикл while</a></li>
+
+        </ul>
+    </nav>
+
+    <main class="content">
+        <section id="цикл-for" class="section">
+<p><link rel="stylesheet" href="../../assets/css/prism.css" /></p>
+<h1>Цикл <code>for</code></h1>
+<p>Цикл, предназначенный для перебора элементов коллекций.</p>
+<p>Типы коллекций в Python: строки, списки, словари, множества, кортежи.</p>
+<pre><code>for переменная in последовательность:
+    тело цикла
+</code></pre>
+<h2>Использование функции <code>range</code></h2>
+<p>Функция <code>range</code> возвращает последовательность чисел.</p>
+<p>Перегрузки функции <code>range</code>:</p>
+<pre><code>range(stop) # 0 .. stop - 1
+range(start, stop) # start .. stop - 1
+range(start, stop, step) 
+</code></pre>
+<p><code>start</code> - начало последовательности (по умолчанию 0)<br />
+<code>stop</code> - окончание последовательности (не включительно)<br />
+<code>step</code> - шаг (по умолчанию 1)</p>
+<p>TODO: Описать возможности range двигаться в другую сторону</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python"># Сумма чисел от a до b
+
+a = int(input())
+b = int(input())
+
+total_sum = 0
+
+for i in range(a, b + 1):
+    total_sum += i
+
+print(total_sum)
+</code></pre>
+</div>
+<h2><code>else</code> в цикле <code>for</code></h2>
+<pre><code>for переменная in последовательность:
+    тело цикла
+    [оператор с break]
+else:
+    операторы
+</code></pre>
+<p>Такой подход позволяет выполнить блок <code>else</code>, если цикл завершился без <code>break</code>.</p>
+<h2><code>break</code> и <code>continue</code></h2>
+<pre><code>for переменная in последовательность:
+    тело цикла
+    if условие:
+        break
+    if условие:
+        continue
+</code></pre>
+<p><code>break</code> - прерывает цикл</p>
+<p><code>continue</code> - прерывает текущую итерацию цикла и переходит к следующей</p>
+</section>
+<section id="цикл-while" class="section">
+<h1>Цикл while</h1>
+<p>Цикл с условием.</p>
+<p>Тело цикла выполняется пока истинно логическое выражение.</p>
+<pre><code>while логическое_выражение:
+    тело_цикла
+</code></pre>
+<blockquote>
+<p>Если в теле цикла не меняется ни одно значение переменной из логического выражения,<br />
+то цикл может оказаться бесконечным.</p>
+</blockquote>
+<p>Пример:</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python"># Сумма чисел от a до b
+
+a = int(input())
+b = int(input())
+
+total_sum = 0
+
+while a &lt;= b:
+    total_sum += a
+    a += 1
+
+print(total_sum)
+</code></pre>
+</div>
+<h2><code>else</code> в цикле <code>while</code></h2>
+<pre><code>while логическое_выражение:
+    тело цикла
+    [оператор с break]
+else:
+    тело цикла
+</code></pre>
+<p>Такой подход позволяет выполнить блок <code>else</code>, если цикл завершился без <code>break</code>.</p>
+</section>
+
+    </main>
+</div>
+<script src="../assets/js/prism.js"></script>
+<script src="../assets/js/script.js"></script>
+</body>
+</html>
