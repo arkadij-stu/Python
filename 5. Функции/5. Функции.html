@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Функции</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
+    <script src="https://kit.fontawesome.com/b8991598f2.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1><span class="emoji">📝</span>5. Функции</h1>
+        <p>Теоретический материал</p>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="#функции">🔹 Функции</a></li>
+
+        </ul>
+    </nav>
+
+    <main class="content">
+        <section id="функции" class="section">
+<h1>Функции</h1>
+<p>Выделенная часть кода, выполняющая определённые действия.</p>
+<pre><code>def название_функции(параметры, ...):
+    операторы...
+    [return значение]
+</code></pre>
+<p><code>return</code> - оператор, завершающий выполнение функции и возвращающий какое-либо значение.</p>
+<p>TODO: Указать про то, что имя параметров не обязательно совпадает с именами переменных.</p>
+<h2>Назначение функций</h2>
+<ol>
+<li>Улучшение структуры кода (улучшение читабельности)</li>
+<li>Устранение повторяющихся участков кода (дублирование кода)</li>
+<li>Разделение кода на логические блоки</li>
+</ol>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python"># Функция, выводящая на экран последовательность целых чисел от begin до end
+def print_seq(begin, end):
+    for i in range(begin, end + 1):
+        print(i, end=' ')
+    print()
+
+
+# Функция, суммирующая последовательность целых чисел от begin до end
+def sum_seq(begin, end):
+    s = 0
+    for i in range(begin, end + 1):
+        s += i
+    return s
+
+
+print_seq(5, 45)
+print(sum_seq(5, 45))
+print_seq(1, 45)
+print(sum_seq(1, 45))
+print_seq(50, 100)
+print(sum_seq(50, 100))
+</code></pre>
+</div>
+<h2>Параметры по умолчанию</h2>
+<p>Некоторые параметры могут не указываться при вызове функции, тогда используются значения по умолчанию.</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">def print_seq(begin, end=10):
+    for i in range(begin, end + 1):
+        print(i, end=' ')
+    print()
+
+
+print_seq(5)
+</code></pre>
+</div>
+<p>Важно! Параметры по умолчанию должны располагаться только после обычных параметров.</p>
+<h2>Именованные параметры</h2>
+<p>В Python есть возможность передавать параметры в функцию по имени и по позиции (позиционные параметры).</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">def print_seq(begin, end):
+    for i in range(begin, end + 1):
+        print(i, end=' ')
+    print()
+
+
+print_seq(end=10, begin=5)
+
+</code></pre>
+</div>
+<p>Но можно запретить использование именованных параметров при помощи <code>*</code>.</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">def print_seq(begin, *, end):
+    for i in range(begin, end + 1):
+        print(i, end=' ')
+    print()
+
+
+print_seq(5, end=10)
+</code></pre>
+</div>
+<p>Также, можно запретить использование позиционных параметров при помощи <code>/</code>.<br />
+Все параметры, которые идут до символа <code>/</code> должны передаваться только по имени.</p>
+<blockquote>
+<p>( *, параметры_передаваемые_только_по_имени)\<br />
+( параметры_передаваемые_только_по_позиции, / )</p>
+</blockquote>
+<h2>Переменное число параметров</h2>
+<p>При помощи оператора <code>*</code> можно передавать в функцию переменное число параметров.<br />
+Внутри функции параметры будут представлять собой кортеж.</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">def average(*numbers):
+    return sum(numbers) / len(numbers)
+
+
+print(average(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+print(average(1, 2, 3, 4))
+</code></pre>
+</div>
+<h2>Рекурсия</h2>
+<p>Явление, когда функция вызывает сама себя.</p>
+<blockquote>
+<p>Внутри функции, должна быть проверка выхода из рекурсии.</p>
+</blockquote>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+
+print(factorial(5))
+</code></pre>
+</div>
+</section>
+
+    </main>
+</div>
+<script src="../assets/js/prism.js"></script>
+<script src="../assets/js/script.js"></script>
+</body>
+</html>
