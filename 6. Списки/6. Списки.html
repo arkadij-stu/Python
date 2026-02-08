@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Списки</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
+    <script src="https://kit.fontawesome.com/b8991598f2.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1><span class="emoji">📝</span>6. Списки</h1>
+        <p>Теоретический материал</p>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="#списки">🔹 Списки</a></li>
+
+        </ul>
+    </nav>
+
+    <main class="content">
+        <section id="списки" class="section">
+<h2>Списки</h2>
+<p>Это структура данных, которая может хранить различные элементы</p>
+<p>Создание пустого списка</p>
+<pre><code>list_name = []
+</code></pre>
+<p>Обращение к элементам списка происходит с помощью оператора <code>список[индекс]</code>. Нумерация начинается с 0.</p>
+<h3>Перебор элементов списка</h3>
+<p>1 способ</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">lst = [4, 8, 65, 222, 45]
+for item in lst:
+    print(item)
+</code></pre>
+</div>
+<p>Данный способ позволяет извлекать элементы последовательно из списка. Однако обратиться к соседним или иным элементам невозможно.</p>
+<p>2 способ</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">lst = [4, 8, 65, 222, 45]
+for i in range(len(lst)):
+    print(lst[i])
+</code></pre>
+</div>
+<p>При данном подходе имеется возможность обращаться к соседним и иным элементам.</p>
+<h3>Генераторы</h3>
+<p>Необходимы для быстрого создания списка с данными.</p>
+<pre><code>список = [выражение for переменная in коллекция [условие]]
+</code></pre>
+<p>Пример</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python"># Получить строки длиннее 3 символов
+words = ['xxx', 'xxxx', 'xx', 'xxxxx', 'xxxxxx']
+lst = [w for w in words if len(w) &gt; 3]
+print(lst)
+</code></pre>
+</div>
+<h3>Срезы</h3>
+<p>Дают возможность получить часть списка.\<br />
+Важно! Срезы всегда возвращают список.</p>
+<pre><code>список[начало : конец : шаг]
+</code></pre>
+<ul>
+<li>начало - индекс начала среза (по умолчанию - 0)</li>
+<li>конец - индекс окончания среза (не включительно) (по умолчанию - размер списка)</li>
+<li>шаг - по умолчанию 1</li>
+<li>Все части не обязательны</li>
+<li>Если значение начала и конца отрицательное, то отсчёт происходит с конца списка.</li>
+</ul>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">nums = [1, 2, 3, 4, 5]
+# Разворот списка
+print(nums[::-1]) # 5 4 3 2 1
+# Часть списка
+print(nums[2:4]) # 3 4
+# Часть списка с шагом
+# Элементы на чётных позициях
+print(nums[::2])
+# Элементы на нечётных позициях
+print(nums[1::2])
+</code></pre>
+</div>
+<h3>Извлечение из списка в переменные</h3>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">lst = [2, 8, 9]
+x1, x2, x3 = lst
+</code></pre>
+</div>
+<p>Важно! Кол-во элементов списка должно быть равно кол-ву переменных.</p>
+<h3>Распаковка списка</h3>
+<p>Возможность разложить коллекцию на отдельные элементы. Делается это при помощи знака <code>*</code>.</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">nums = [1, 2, 3, 4, 5]
+print(*nums, sep=' ') # 1 2 3 4 5 6
+</code></pre>
+</div>
+<h3>Чтение списка из строки</h3>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python"># На вход подаётся строка с числами (45 8 322)
+nums = list(map(int, input().split()))
+# map(функция, список) - функция, применяющая какую-либо функцию к каждому элементу списка
+</code></pre>
+</div>
+<h3>Оператор <code>del</code></h3>
+<p>Предназначен для удаления из списка его части или одного элемента.</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">lst = [4, 8, 65, 222, 45]
+del lst[1]
+# 4 65 222 45
+</code></pre>
+</div>
+<h3>Двумерные списки</h3>
+<p>Список, содержащий внутри себя другие списки.\</p>
+<p>Обращение к элементам списка: <code>matrix[строка][столбец]</code>.</p>
+<p>Генерация двумерных списков</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python"># ПРАВИЛЬНАЯ Генерация пустого двумерного списка
+matrix = [[0] * 10 for i in range(10)]
+
+# НЕПРАВИЛЬНАЯ (Создаются копии строк списка и меняются одновременно)
+matrix = [[0] * 10] * 10
+</code></pre>
+</div>
+<h3>Функции списков</h3>
+
+<div class="function-block">
+    <div class="function-signature">list(значение)</div>
+    <div class="function-description">Преобразует значение в список.<br />
+Примечание: Если передать в функцию строку, то она преобразуется в список из символов.</div>
+</div>
+<div class="function-block">
+    <div class="function-signature">append(значение)</div>
+    <div class="function-description">Вставляет значение в конец списка.</div>
+</div>
+
+<p>Пример</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">lst = []
+for i in range(10):
+    lst.append(i)
+print(lst)
+</code></pre>
+</div>
+
+<div class="function-block">
+    <div class="function-signature">insert(позиция, значение)</div>
+    <div class="function-description">Вставляет значение в определённую позицию списка.<br />
+Примечание: Если указать позицию больше, чем размер списка, то элемент добавится в конец списка</div>
+</div>
+
+<p>Пример</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">lst = []
+for i in range(10):
+    # Каждый элемент добавляется в начало списка
+    lst.insert(0, i)
+# Добавит в конец списка
+lst.insert(20, 100)
+print(lst)
+</code></pre>
+</div>
+
+<div class="function-block">
+    <div class="function-signature">remove(значение)</div>
+    <div class="function-description">Удаляет из списка первый элемент с определённым значением.<br />
+Если значение не найдено, возвращается ошибка.</div>
+</div>
+
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python"># Удалить все числа 5 из списка
+lst = [1, 2, 5, 8, 7, 5, 14, 5, 8]
+while 5 in lst:
+    lst.remove(5)
+print(lst)
+</code></pre>
+</div>
+
+<div class="function-block">
+    <div class="function-signature">index(значение, [начало], [конец])</div>
+    <div class="function-description">Возвращает индекс первого элемента в списке равного определённому значению.<br />
+Если значение не найдено, возвращается ошибка.</div>
+</div>
+<div class="function-block">
+    <div class="function-signature">clear()</div>
+    <div class="function-description">Очищает список.</div>
+</div>
+<div class="function-block">
+    <div class="function-signature">pop([позиция])</div>
+    <div class="function-description">Удаляет и возвращает элемент, находящийся на определённой позиции.<br />
+Если значение не передано, то возвращается последний элемент.<br />
+Если позиция выходит из диапазона списка, то возвращается ошибка.</div>
+</div>
+
+<p>Пример</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python"># TODO: Доделать
+</code></pre>
+</div>
+
+<div class="function-block">
+    <div class="function-signature">count(значение)</div>
+    <div class="function-description">Возвращает кол-во элементов в списке равных определённому значению.</div>
+</div>
+
+<p>Пример</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python"># TODO: Доделать
+</code></pre>
+</div>
+
+<div class="function-block">
+    <div class="function-signature">copy()</div>
+    <div class="function-description">Копирует список и возвращает новый список с такими же значениями.</div>
+</div>
+
+<p>Пример</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python"># TODO: Доделать
+</code></pre>
+</div>
+
+<div class="function-block">
+    <div class="function-signature">sort([reverse], [key])</div>
+    <div class="function-description">Сортирует список.<br />
+Дополнительные параметры:<br />
+reverse - определяет необходимо ли сортировать в обратном направлении.<br />
+key - правило сортировки в виде лямбда-выражения или обычной функции<br />
+Примечание: Сортировать можно только списки с элементами одного типа.</div>
+</div>
+
+<p>Пример - обычная сортировка</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">lst = [1, 2, 5, 4, 0, 5, 14, 0, 8]
+lst.sort()
+print(lst) # [0, 0, 1, 2, 4, 5, 5, 8, 14]
+</code></pre>
+</div>
+<p>Пример - сортировка по убыванию</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">lst = [1, 2, 5, 4, 0, 5, 14, 0, 8]
+lst.sort(reverse=True)
+print(lst) # [14, 8, 5, 5, 4, 2, 1, 0, 0]
+</code></pre>
+</div>
+<p>Пример - сортировка массива строк по длине строки</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">lst = ['a', 'abba', 'c', 'bb', 's', 'aba', 'bbb']
+lst.sort(key=len)
+print(lst) # ['a', 'c', 's', 'bb', 'aba', 'bbb', 'abba']
+</code></pre>
+</div>
+<p>Пример - сортировка по последней букве</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">lst = ['a', 'abbae', 'c', 'bb', 'sd', 'aba', 'bbb']
+lst.sort(key=lambda x: x[-1])
+print(lst) # ['a', 'aba', 'bb', 'bbb', 'c', 'sd', 'abbae']
+</code></pre>
+</div>
+<p>Пример - сортировка по нескольким полям</p>
+<div class="pre-code">
+<pre class="line-numbers match-braces" data-download-link><code class="language-python">lst = [['LastName_A', 'FirstName_A'],
+       ['LastName_B', 'FirstName_Z'],
+       ['LastName_A', 'FirstName_C'],
+       ['LastName_B', 'FirstName_B'],
+       ['LastName_C', 'FirstName_B'],
+       ['LastName_C', 'FirstName_A'],
+       ['LastName_A', 'FirstName_B']]
+lst.sort(key=lambda x: (x[0], x[1]))
+print(*lst, sep='\n')
+# ['LastName_A', 'FirstName_A']
+# ['LastName_A', 'FirstName_B']
+# ['LastName_A', 'FirstName_C']
+# ['LastName_B', 'FirstName_B']
+# ['LastName_B', 'FirstName_Z']
+# ['LastName_C', 'FirstName_A']
+# ['LastName_C', 'FirstName_B']
+</code></pre>
+</div>
+<h3>Общие функции</h3>
+
+<div class="function-block">
+    <div class="function-signature">sorted(список, [reverse], [key])</div>
+    <div class="function-description">Сортирует список, не меняя исходный.<br />
+Дополнительные параметры:<br />
+reverse - определяет необходимо ли сортировать в обратном направлении.<br />
+key - правило сортировки в виде лямбда-выражения или обычной функции<br />
+Примечание: Сортировать можно только списки с элементами одного типа.<br />
+Возвращает отсортированный список.</div>
+</div>
+<div class="function-block">
+    <div class="function-signature">len(список)</div>
+    <div class="function-description">Возвращает размер списка</div>
+</div>
+<div class="function-block">
+    <div class="function-signature">max(список)</div>
+    <div class="function-description">Возвращает максимальный элемент списка.<br />
+Дополнительные параметры:<br />
+<code>key</code> - правило сравнения при поиске</div>
+</div>
+
+</section>
+
+    </main>
+</div>
+<script src="../assets/js/prism.js"></script>
+<script src="../assets/js/script.js"></script>
+</body>
+</html>
