@@ -12,129 +12,209 @@
 <body>
 <div class="container">
     <header class="header">
-        <h1><span class="emoji">📝</span>5. Функции</h1>
+        <h1><span class="emoji">⚙️</span>5. Функции</h1>
         <p>Теоретический материал</p>
     </header>
 
     <nav class="nav">
         <ul>
-            <li><a href="#функции">🔹 Функции</a></li>
-
+            <li><a href="#основы">🔹 Основы функций</a></li>
+            <li><a href="#параметры">🔹 Параметры и аргументы</a></li>
+            <li><a href="#переменное-число">🔹 Переменное число аргументов</a></li>
+            <li><a href="#рекурсия">🔹 Рекурсия</a></li>
         </ul>
     </nav>
 
     <main class="content">
-        <section id="функции" class="section">
-<h1>Функции</h1>
-<p>Выделенная часть кода, выполняющая определённые действия.</p>
-<pre><code>def название_функции(параметры, ...):
-    операторы...
-    [return значение]
-</code></pre>
-<p><code>return</code> - оператор, завершающий выполнение функции и возвращающий какое-либо значение.</p>
-<p>TODO: Указать про то, что имя параметров не обязательно совпадает с именами переменных.</p>
-<h2>Назначение функций</h2>
-<ol>
-<li>Улучшение структуры кода (улучшение читабельности)</li>
-<li>Устранение повторяющихся участков кода (дублирование кода)</li>
-<li>Разделение кода на логические блоки</li>
-</ol>
-<div class="pre-code">
-<pre class="line-numbers match-braces" data-download-link><code class="language-python"># Функция, выводящая на экран последовательность целых чисел от begin до end
-def print_seq(begin, end):
-    for i in range(begin, end + 1):
-        print(i, end=' ')
-    print()
 
+        <!-- ОСНОВЫ -->
+        <section id="основы" class="section">
+            <h2>Основы функций</h2>
+            <p><strong>Функция</strong> — это именованный блок кода, который выполняет определённую задачу. Функции помогают устранить дублирование кода, улучшить читаемость и разбить программу на логические части.</p>
 
-# Функция, суммирующая последовательность целых чисел от begin до end
-def sum_seq(begin, end):
-    s = 0
-    for i in range(begin, end + 1):
-        s += i
-    return s
+            <h3>Синтаксис объявления</h3>
+            <div>
+                <pre><code>def имя_функции(параметры):
+    тело_функции
+    [return значение]</code></pre>
+            </div>
 
+            <div class="note">
+                <p><strong>def</strong> — ключевое слово для объявления функции.<br>
+                <strong>return</strong> — оператор, завершающий выполнение функции и возвращающий результат. Если <code>return</code> не указан, функция возвращает <code>None</code>.</p>
+            </div>
 
-print_seq(5, 45)
-print(sum_seq(5, 45))
-print_seq(1, 45)
-print(sum_seq(1, 45))
-print_seq(50, 100)
-print(sum_seq(50, 100))
-</code></pre>
-</div>
-<h2>Параметры по умолчанию</h2>
-<p>Некоторые параметры могут не указываться при вызове функции, тогда используются значения по умолчанию.</p>
-<div class="pre-code">
-<pre class="line-numbers match-braces" data-download-link><code class="language-python">def print_seq(begin, end=10):
-    for i in range(begin, end + 1):
-        print(i, end=' ')
-    print()
+            <div class="example-box">
+                <h4>Пример простой функции:</h4>
+                <pre class="line-numbers match-braces"><code class="language-python">def say_hello(name):
+    print(f"Привет, {name}!")
 
+# Вызов функции
+say_hello("Алексей")  # Вывод: Привет, Алексей!</code></pre>
+            </div>
 
-print_seq(5)
-</code></pre>
-</div>
-<p>Важно! Параметры по умолчанию должны располагаться только после обычных параметров.</p>
-<h2>Именованные параметры</h2>
-<p>В Python есть возможность передавать параметры в функцию по имени и по позиции (позиционные параметры).</p>
-<div class="pre-code">
-<pre class="line-numbers match-braces" data-download-link><code class="language-python">def print_seq(begin, end):
-    for i in range(begin, end + 1):
-        print(i, end=' ')
-    print()
+            <div class="example-box">
+                <h4>Пример функции с возвращаемым значением:</h4>
+                <pre class="line-numbers match-braces"><code class="language-python">def add(a, b):
+    return a + b
 
+result = add(5, 3)
+print(result)  # Вывод: 8</code></pre>
+            </div>
+        </section>
 
-print_seq(end=10, begin=5)
+        <!-- ПАРАМЕТРЫ И АРГУМЕНТЫ -->
+        <section id="параметры" class="section">
+            <h2>Параметры и аргументы</h2>
+            
+            <h3>1. Позиционные и именованные аргументы</h3>
+            <p>При вызове функции аргументы можно передавать двумя способами:</p>
+            <ul>
+                <li><strong>Позиционные:</strong> Значения передаются в том же порядке, в котором объявлены параметры.</li>
+                <li><strong>Именованные:</strong> Значения передаются с указанием имени параметра (порядок не важен).</li>
+            </ul>
 
-</code></pre>
-</div>
-<p>Но можно запретить использование именованных параметров при помощи <code>*</code>.</p>
-<div class="pre-code">
-<pre class="line-numbers match-braces" data-download-link><code class="language-python">def print_seq(begin, *, end):
-    for i in range(begin, end + 1):
-        print(i, end=' ')
-    print()
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">def describe_person(name, age):
+    print(f"{name} ({age} лет)")
 
+# Позиционные аргументы
+describe_person("Ivan", 25)
 
-print_seq(5, end=10)
-</code></pre>
-</div>
-<p>Также, можно запретить использование позиционных параметров при помощи <code>/</code>.<br />
-Все параметры, которые идут до символа <code>/</code> должны передаваться только по имени.</p>
-<blockquote>
-<p>( *, параметры_передаваемые_только_по_имени)\<br />
-( параметры_передаваемые_только_по_позиции, / )</p>
-</blockquote>
-<h2>Переменное число параметров</h2>
-<p>При помощи оператора <code>*</code> можно передавать в функцию переменное число параметров.<br />
-Внутри функции параметры будут представлять собой кортеж.</p>
-<div class="pre-code">
-<pre class="line-numbers match-braces" data-download-link><code class="language-python">def average(*numbers):
-    return sum(numbers) / len(numbers)
+# Именованные аргументы
+describe_person(age=30, name="Maria")</code></pre>
+            </div>
 
+            <h3>2. Значения по умолчанию</h3>
+            <p>Параметрам можно задать значения по умолчанию. Если при вызове аргумент не передан, будет использовано это значение.</p>
+            <div class="important">
+                <p>Параметры со значениями по умолчанию должны стоять <strong>после</strong> обязательных параметров.</p>
+            </div>
 
-print(average(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
-print(average(1, 2, 3, 4))
-</code></pre>
-</div>
-<h2>Рекурсия</h2>
-<p>Явление, когда функция вызывает сама себя.</p>
-<blockquote>
-<p>Внутри функции, должна быть проверка выхода из рекурсии.</p>
-</blockquote>
-<div class="pre-code">
-<pre class="line-numbers match-braces" data-download-link><code class="language-python">def factorial(n):
-    if n == 0:
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">def greet(name, greeting="Привет"):
+    print(f"{greeting}, {name}!")
+
+greet("Ольга")          # Вывод: Привет, Ольга!
+greet("Дмитрий", "Hello") # Вывод: Hello, Дмитрий!</code></pre>
+            </div>
+
+            <h3>3. Ограничение типа передачи аргументов</h3>
+            <p>Python позволяет жестко задать, как можно передавать аргументы: только позиционно или только по имени.</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Синтаксис</th>
+                        <th>Описание</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><code>def f(pos1, pos2, /, p_or_k):</code></td>
+                        <td>Символ <code>/</code> отделяет <strong>только позиционные</strong> параметры (слева от него).</td>
+                    </tr>
+                    <tr>
+                        <td><code>def f(p_or_k, *, key1, key2):</code></td>
+                        <td>Символ <code>*</code> отделяет <strong>только именованные</strong> параметры (справа от него).</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">def strict_function(pos_only, /, standard, *, kw_only):
+    print(pos_only, standard, kw_only)
+
+# Правильный вызов:
+strict_function(1, 2, kw_only=3)
+strict_function(1, standard=2, kw_only=3)
+
+# Ошибки:
+# strict_function(pos_only=1, ...)  # Ошибка! pos_only только позиционно
+# strict_function(..., 3)           # Ошибка! kw_only только именованно</code></pre>
+            </div>
+        </section>
+
+        <!-- ПЕРЕМЕННОЕ ЧИСЛО АРГУМЕНТОВ -->
+        <section id="переменное-число" class="section">
+            <h2>Переменное число аргументов</h2>
+            <p>Иногда заранее неизвестно, сколько аргументов будет передано в функцию. Для этого используются специальные конструкции:</p>
+
+            <h3><code>*args</code> (Positional Arguments)</h3>
+            <p>Собирает все лишние позиционные аргументы в <strong>кортеж</strong> (tuple).</p>
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">def sum_all(*args):
+    # args = (1, 2, 3, 4)
+    return sum(args)
+
+print(sum_all(1, 2, 3, 4))  # 10</code></pre>
+            </div>
+
+            <h3><code>**kwargs</code> (Keyword Arguments)</h3>
+            <p>Собирает все лишние именованные аргументы в <strong>словарь</strong> (dictionary).</p>
+            <div class="pre-code">
+                <pre class="line-numbers match-braces"><code class="language-python">def print_info(**kwargs):
+    # kwargs = {'name': 'Tom', 'age': 30}
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+print_info(name="Tom", age=30)</code></pre>
+            </div>
+        </section>
+
+        <!-- РЕКУРСИЯ -->
+        <section id="рекурсия" class="section">
+            <h2>Рекурсия</h2>
+            <p><strong>Рекурсия</strong> — это способ организации вычислений, при котором функция вызывает сама себя.</p>
+            
+            <div class="important">
+                <p>Любая рекурсивная функция должна иметь:</p>
+                <ol>
+                    <li><strong>Базовый случай</strong> — условие выхода из рекурсии (остановка вызовов).</li>
+                    <li><strong>Рекурсивный шаг</strong> — вызов самой себя с измененными аргументами, приближающими нас к базовому случаю.</li>
+                </ol>
+            </div>
+
+            <div class="example-box">
+                <h4>Пример: Факториал числа (n!)</h4>
+                <p>Факториал 5! = 5 * 4 * 3 * 2 * 1</p>
+                <pre class="line-numbers match-braces"><code class="language-python">def factorial(n):
+    if n == 0:  # Базовый случай
         return 1
-    else:
+    else:       # Рекурсивный шаг
         return n * factorial(n - 1)
 
+print(factorial(3)) # 6</code></pre>
+            </div>
 
-print(factorial(5))
-</code></pre>
-</div>
-</section>
+            <h3>Как работает рекурсия (Прямой и Обратный ход)</h3>
+            <p>Рекурсивный процесс можно разделить на два этапа:</p>
+            <ol>
+                <li><strong>Прямой ход (Погружение):</strong> Функция вызывает сама себя, добавляя новые вызовы в стек вызовов. Аргументы меняются (n уменьшается). Вычисления откладываются.</li>
+                <li><strong>Обратный ход (Всплытие):</strong> Достигнут базовый случай. Функции начинают завершаться, возвращая результаты предыдущим вызовам. Выполняются отложенные вычисления.</li>
+            </ol>
+
+            <div class="note" style="font-family: monospace; white-space: pre; line-height: 1.5;">
+<strong>Схема вызова factorial(3):</strong>
+
+⬇️ ПРЯМОЙ ХОД (Вызовы добавляются в стек)
+factorial(3) возвращает 3 * factorial(2)
+    factorial(2) возвращает 2 * factorial(1)
+        factorial(1) возвращает 1 * factorial(0)
+            factorial(0) возвращает 1  <-- 🛑 БАЗОВЫЙ СЛУЧАЙ
+
+⬆️ ОБРАТНЫЙ ХОД (Вычисление и возврат значений)
+            factorial(0) -> вернул 1
+        factorial(1) -> 1 * 1 = 1
+    factorial(2) -> 2 * 1 = 2
+factorial(3) -> 3 * 2 = 6
+
+<strong>Результат: 6</strong>
+            </div>
+
+        </section>
 
     </main>
 </div>
