@@ -43,6 +43,27 @@ list_name = list()</code></pre>
             </div>
 
             <p>Обращение к элементам списка происходит с помощью оператора <code>список[индекс]</code>. Нумерация начинается с 0.</p>
+            <p>Массивы можно складывать друг с другом при помощи оператора <code>+</code>.</p>
+        </section>
+
+        <!-- ФУНКЦИИ -->
+        <section id="функции" class="section">
+            <h2>Общие функции работы с коллекциями</h2>
+
+            <div class="function-block">
+                <div class="function-signature">len(список)</div>
+                <div class="function-description">Возвращает длину списка.</div>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">max(список) / min(список)</div>
+                <div class="function-description">Возвращает максимальный / минимальный элемент.</div>
+            </div>
+
+            <div class="function-block">
+                <div class="function-signature">sum(список)</div>
+                <div class="function-description">Возвращает сумму элементов (если это числа).</div>
+            </div>
         </section>
 
         <!-- ПЕРЕБОР -->
@@ -88,7 +109,7 @@ print(lst) # ['xxxx', 'xxxxx', 'xxxxxx']</code></pre>
         <!-- СРЕЗЫ -->
         <section id="срезы" class="section">
             <h2>Срезы</h2>
-            <p>Срезы позволяют получить копию части списка.</p>
+            <p>Срезы позволяют получить копию части списка. Результатом среза всегда является список.</p>
             <div class="important">
                 <p><code>список[начало : конец : шаг]</code></p>
                 <ul>
@@ -316,27 +337,6 @@ print(lst) # [3, 1, 2] - остался прежним
 print(new_lst) # [1, 2, 3] - новый список</code></pre>
             </div>
         </section>
-
-        <!-- ФУНКЦИИ -->
-        <section id="функции" class="section">
-            <h2>Общие функции</h2>
-            
-            <div class="function-block">
-                <div class="function-signature">len(список)</div>
-                <div class="function-description">Возвращает длину списка.</div>
-            </div>
-
-            <div class="function-block">
-                <div class="function-signature">max(список) / min(список)</div>
-                <div class="function-description">Возвращает максимальный / минимальный элемент.</div>
-            </div>
-
-             <div class="function-block">
-                <div class="function-signature">sum(список)</div>
-                <div class="function-description">Возвращает сумму элементов (если это числа).</div>
-            </div>
-        </section>
-
     </main>
 </div>
 <script src="../assets/js/prism.js"></script>
