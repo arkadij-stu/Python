@@ -1,5 +1,5 @@
 import sqlite3
 connection = sqlite3.connect('northwind_small.sqlite')
 cur = connection.cursor()
-result = cur.execute('select Company name, ContactName, City from Customer order by CompanyName').fetchall()
+result = cur.execute('select Id, OrderDate, RequiredDate from "Order" where ShippedDate is null').fetchall()
 print(result)
